@@ -230,6 +230,13 @@
           </a>
         </li>
       
+
+      
+      {% elseif theme.algolia_search %}
+        <a href="#" class="popup-trigger">
+          {{ __('menu.search') }}
+        </a>
+      
     </ul>
   
 
@@ -392,7 +399,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <link href="/css/search.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/search.js"></script>
+
+<div class="copyright" >
   
   &copy; 
   <span itemprop="copyrightYear">2016</span>
