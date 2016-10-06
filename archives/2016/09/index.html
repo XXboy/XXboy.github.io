@@ -222,7 +222,20 @@
         <li class="menu-item menu-item-search">
           
             <a href="javascript:;" class="popup-trigger">
-		  
+          
+		  {% elseif theme.algolia_search %}
+  			<a href="#" class="popup-trigger">
+    		{{ __('menu.search') }}
+  			</a>
+  		  
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
