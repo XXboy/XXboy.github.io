@@ -106,7 +106,13 @@
     duoshuo: {
       userId: 0,
       author: '博主'
-    },
+    }
+  };
+</script>
+
+
+<script type="text/javascript" id="hexo.search.configuration">
+  var SEARCH_CONFIG = {
     root: '/',
     algolia: {
       applicationID: KOQ48QXNA7,
@@ -839,7 +845,7 @@
 
 <script type="text/javascript">
 $(document).ready(function () {
-  var algoliaSettings = CONFIG.algolia;
+  var algoliaSettings = SEARCH_CONFIG.algolia;
   var isAlgoliaSettingsValid = algoliaSettings.applicationID &&
     algoliaSettings.apiKey &&
     algoliaSettings.indexName;
@@ -875,7 +881,7 @@ $(document).ready(function () {
       templates: {
         item: function (data) {
           return (
-            '<a href="' + CONFIG.root + data.path + '" class="algolia-hit-item-link">' +
+            '<a href="' + SEARCH_CONFIG.root + data.path + '" class="algolia-hit-item-link">' +
             data._highlightResult.title.value +
             '</a>'
           );
@@ -903,7 +909,7 @@ $(document).ready(function () {
           return (
             stats +
             '<span class="algolia-powered">' +
-            '  <img src="' + CONFIG.root + 'images/algolia_logo.svg" alt="Algolia" />' +
+            '  <img src="' + SEARCH_CONFIG.root + 'images/algolia_logo.svg" alt="Algolia" />' +
             '</span>' +
             '<hr />'
           );
