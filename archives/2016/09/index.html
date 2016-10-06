@@ -784,39 +784,33 @@
   
 
   <script src="http://cdn.bootcss.com/instantsearch.js/1.5.1/instantsearch.js"></script>
-
 <script type="text/javascript">
 $(document).ready(function () {
   var algoliaSettings = CONFIG.algolia;
   var isAlgoliaSettingsValid = algoliaSettings.applicationID &&
     algoliaSettings.apiKey &&
     algoliaSettings.indexName;
-
   if (!isAlgoliaSettingsValid) {
     window.console.error('Algolia Settings are invalid.');
     return;
   }
-
   var search = instantsearch({
     appId: algoliaSettings.applicationID,
     apiKey: algoliaSettings.apiKey,
     indexName: algoliaSettings.indexName,
     searchFunction: function (helper) {
       var searchInput = $('#algolia-search-input').find('input');
-
       if (searchInput.val()) {
         helper.search();
       }
     }
   });
-
   // Registering Widgets
   [
     instantsearch.widgets.searchBox({
       container: '#algolia-search-input',
       placeholder: algoliaSettings.labels.input_placeholder
     }),
-
     instantsearch.widgets.hits({
       container: '#algolia-hits',
       hitsPerPage: algoliaSettings.hits.per_page || 10,
@@ -840,7 +834,6 @@ $(document).ready(function () {
         item: 'algolia-hit-item'
       }
     }),
-
     instantsearch.widgets.stats({
       container: '#algolia-stats',
       templates: {
@@ -858,7 +851,6 @@ $(document).ready(function () {
         }
       }
     }),
-
     instantsearch.widgets.pagination({
       container: '#algolia-pagination',
       scrollTo: false,
@@ -878,31 +870,25 @@ $(document).ready(function () {
       }
     })
   ].forEach(search.addWidget, search);
-
   search.start();
-
   $('.popup-trigger').on('click', function(e) {
     e.stopPropagation();
     $('body').append('<div class="popoverlay">').css('overflow', 'hidden');
     $('.popup').toggle();
     $('#algolia-search-input').find('input').focus();
   });
-
   $('.popup-btn-close').click(function(){
     $('.popup').hide();
     $('.popoverlay').remove();
     $('body').css('overflow', '');
   });
-
 });
 </script>
-
 <script type="text/javascript">
   $(document).ready(function () {
     if ( $('#local-search-input').size() === 0) {
       return;
     }
-
     // Popup Window;
     var isfetched = false;
     // Search DB path;
@@ -912,11 +898,9 @@ $(document).ready(function () {
     }
     var path = "/" + search_path;
     // monitor main search box;
-
     function proceedsearch() {
       $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
       $('.popup').toggle();
-
     }
     // search function;
     var searchFunc = function(path, search_id, content_id) {
@@ -995,7 +979,6 @@ $(document).ready(function () {
                       var regS = new RegExp(keyword, "gi");
                       match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
                     });
-
                     str += "<p class=\"search-result\">" + match_content +"...</p>"
                   }
                   str += "</li>";
@@ -1009,7 +992,6 @@ $(document).ready(function () {
           proceedsearch();
         }
       });}
-
     // handle and trigger popup window;
     $('.popup-trigger').mousedown(function(e) {
       e.stopPropagation();
@@ -1018,9 +1000,7 @@ $(document).ready(function () {
       } else {
         proceedsearch();
       };
-
     });
-
     $('.popup-btn-close').click(function(e){
       $('.popup').hide();
       $(".popoverlay").remove();
